@@ -3,6 +3,9 @@ import GoogleMapReact from 'google-map-react';
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 
+const apiKey = process.env.REACT_APP_API_KEY; 
+console.log("key:" + apiKey)
+
 const Details = (props) => {
 
   const { id } = useParams();
@@ -35,7 +38,7 @@ const Details = (props) => {
 
       <div style={{ height: '90vh', width: '50%' }}>
         <GoogleMapReact
-          bootstrapURLKeys={{ key: "AIzaSyDludEg1LoGc0K1gPDsHZw4mu7XMfUV6Z4" }}
+          bootstrapURLKeys={{ key: apiKey }}
           center={defaultProps.center}
           defaultZoom={defaultProps.zoom}
         >

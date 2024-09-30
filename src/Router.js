@@ -8,7 +8,7 @@ import cookie from 'cookie'
 import Login from './components/LoginComponent'
 import Listing from './containers/ListingContainer'
 import Details from './containers/DetailsContainer'
-import Add from './components/Add'
+import Add from './components/AddComponent'
 
 // Write checkAuth function here
 // Check the cookies for a cookie called "loggedIn"
