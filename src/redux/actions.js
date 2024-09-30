@@ -1,4 +1,6 @@
-const url = `https://maps.google.com/maps/api/geocode/json?key=AIzaSyDludEg1LoGc0K1gPDsHZw4mu7XMfUV6Z4&address=`
+require('dotenv').config(); 
+const apiKey = process.env.API_KEY; 
+const url = `https://maps.google.com/maps/api/geocode/json?key=${apiKey}`
 
 export const fetchMakes = (string) => {
   return (dispatch) => {
