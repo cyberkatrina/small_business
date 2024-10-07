@@ -1,17 +1,18 @@
 import { bindActionCreators } from "redux";
 import Listing from "../components/ListingComponent"
-import { fetchMakes } from "../redux/actions";
+import { fetchMakes, removeItem } from "../redux/actions";
 import { connect } from "react-redux"
 
 
 const mapStateToProps = (state) => {
   return {
-    businesses: state.businesses
+    businesses: state.businesses,
+    user: state.user
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({ fetchMakes }, dispatch)
+  return bindActionCreators({ fetchMakes, removeItem }, dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Listing)

@@ -1,14 +1,10 @@
 import React from 'react'
 import { Routes, Route, Navigate } from 'react-router'
 import cookie from 'cookie'
-// import HomeContainer from './containers/HomeContainer'
-// import About from './components/About'
-// import Car from './components/Car'
-// import Login from './components/Login'
-import Login from './components/LoginComponent'
+import Login from './containers/LoginContainer'
 import Listing from './containers/ListingContainer'
 import Details from './containers/DetailsContainer'
-import Add from './components/AddComponent'
+import Add from './containers/AddContainer'
 
 // Write checkAuth function here
 // Check the cookies for a cookie called "loggedIn"

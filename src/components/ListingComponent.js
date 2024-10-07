@@ -5,26 +5,55 @@ import {
     TableBody,
     TableCell,
     TableHead,
-    TableRow
+    TableRow,
+    Typography
 } from '@mui/material'
 import { Link } from "react-router-dom";
+import DeleteIcon from '@mui/icons-material/Delete'
+import cookie from "cookie";
+
+const checkAuth = () => {
+  let cookies = cookie.parse(document.cookie)
+  return cookies["loggedIn"] ? true : false
+}
 
 const Listing = (props) => {
     return (
-        <Container maxWidth="lg" className="car-container">
-            {/* Change NAME to props.user.username */}
-            <h4>Welcome</h4>
+        <Container maxWidth="lg" className="table-container">
             <Table>
                 <TableHead>
-                    <TableRow>
-                        <TableCell>Name</TableCell>
-                        <TableCell>Description</TableCell>
-                        <TableCell>Hours</TableCell>
-                        <TableCell>Address</TableCell>
-                    </TableRow>
+                <TableRow>
+        <TableCell>
+            <Typography component="span" fontWeight="bold" color='grey'>
+                Name
+            </Typography>
+        </TableCell>
+        <TableCell>
+            <Typography component="span" fontWeight="bold" color='grey'>
+                Description
+            </Typography>
+        </TableCell>
+        <TableCell>
+            <Typography component="span" fontWeight="bold" color='grey'>
+                Hours
+            </Typography>
+        </TableCell>
+        <TableCell>
+            <Typography component="span" fontWeight="bold" color='grey'>
+                Address
+            </Typography>
+        </TableCell>
+        {checkAuth() && (
+            <TableCell>
+                <Typography component="span" fontWeight="bold" color='grey'>
+                    Delete
+                </Typography>
+            </TableCell>
+        )}
+    </TableRow>
                 </TableHead>
                 <TableBody>
-                {props.businesses.map((business) => (
+                {props.businesses.map((business, idx) => (
                     <TableRow key={business.id}>
                         <TableCell>
                           <Link to={`/details/${business.id}`}>{business.name}</Link>
@@ -32,6 +61,13 @@ const Listing = (props) => {
                         <TableCell>{business.description}</TableCell>
                         <TableCell>{business.hours}</TableCell>
                         <TableCell>{business.address}</TableCell>
+                        {checkAuth() ? 
+                        <TableCell>
+                            <DeleteIcon
+                                onClick={() => props.removeItem(idx)}
+                                className="icon text-red" />
+                        </TableCell> 
+                        : <span></span>}
                     </TableRow>
                 ))}
                 </TableBody>

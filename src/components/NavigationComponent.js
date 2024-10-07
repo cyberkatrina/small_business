@@ -21,11 +21,15 @@ const Navigation = (props) => {
         <Typography variant="h6" style={{ flexGrow: "1" }}>
           Austin Small Business
         </Typography>
-        <ul className="nav-list">
+        <ul className="nav-list" style={{listSStyleType: 'none'}}>
           <li className="nav-list-item">
             <Link to="/">Listings</Link>
           </li>
           {checkAuth() ?
+          <div style={{display: 'flex'}}>
+            <li className="nav-list-item">
+              <Link to="/add">Add</Link>
+            </li> 
             <li
             className="nav-list-item"
             onClick={() => {
@@ -35,9 +39,9 @@ const Navigation = (props) => {
               navigate("/login");
             }}
           >
-            <Link to="/login">Logout</Link>
-          </li>
-          
+              <Link to="/login">LOGOUT</Link>
+            </li>
+          </div>
           :
           <li className="nav-list-item">
               <Link to="/login">Login</Link>
@@ -45,6 +49,7 @@ const Navigation = (props) => {
         }
         </ul>
       </Toolbar>
+      {checkAuth() ? <div style={{backgroundColor: 'lightGrey', color: 'grey', paddingLeft: '20px'}}> Logged in as: {props.user}</div> : <span></span>}
     </AppBar>
   );
 };

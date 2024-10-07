@@ -3,6 +3,7 @@ export const fetchMakes = (string) => {
   const url = `https://maps.google.com/maps/api/geocode/json?key=${apiKey}&address=${encodeURIComponent(string)}`; // Ensure the string is properly included
 
   return (dispatch) => {
+    console.log('API Key:', process.env.REACT_APP_API_KEY);
       fetch(url)
           .then(response => response.json()) // Convert response to JSON
           .then(data => {
@@ -28,3 +29,24 @@ export const fetchMakes = (string) => {
           });
   };
 };
+
+export const removeItem = (index) => {
+  return {
+    type: 'REMOVE',
+    value: index
+  }
+}
+
+export const addItem = (business) => {
+  return {
+    type: 'ADD',
+    value: business
+  }
+}
+
+export const changeUser = (username) => {
+  return {
+    type: 'USER',
+    value: username
+  }
+}

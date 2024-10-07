@@ -4,11 +4,13 @@ const businesses = (state = [], action) => {
   switch(action.type) {
       case "FETCH_MAKES":
           return action.value
-      // case 'REMOVE_CAR':
-      //     const makes = [ ...state ]
-      //     makes.splice(action.value, 1)
-      //     console.log(action.value)
-      //     return makes
+      case 'REMOVE':
+          const list = [ ...state ]
+          list.splice(action.value, 1)
+          console.log(action.value)
+          return list
+      case 'ADD':
+          return [...state, action.value]
       default:
           return state
   }
@@ -25,4 +27,13 @@ const map = (state = {}, action) => {
   }
 }
 
-export default combineReducers({ businesses, map })
+const user = (state = '', action) => {
+  switch(action.type) {
+    case "USER":
+      return action.value
+    default:
+      return state
+  }
+}
+
+export default combineReducers({ businesses, map, user })
